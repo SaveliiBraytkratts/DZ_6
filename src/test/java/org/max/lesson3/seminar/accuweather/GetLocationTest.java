@@ -22,6 +22,7 @@ public class GetLocationTest extends AccuweatherAbstractTest {
                 .then()
                 .statusCode(200)
                 .time(Matchers.lessThan(2000l))
+                .time(Matchers.greaterThan(200l))
                 .extract()
                 .body().jsonPath().getList(".", Location.class);
 
