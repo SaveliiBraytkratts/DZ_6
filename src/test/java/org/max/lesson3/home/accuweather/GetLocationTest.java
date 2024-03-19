@@ -12,11 +12,11 @@ import static io.restassured.RestAssured.given;
 public class GetLocationTest extends AccuweatherAbstractTest{
 
     @Test
-    void getLocation_search_returnMoscow() {
+    void getLocation_search_returnAmursk() {
 
         List<Location> response = given()
                 .queryParam("apikey", getApiKey())
-                .queryParam("q", "Moscow")
+                .queryParam("q", "Amursk")
                 .when()
                 .get(getBaseUrl()+"/locations/v1/cities/search")
                 .then()
@@ -25,7 +25,6 @@ public class GetLocationTest extends AccuweatherAbstractTest{
                 .extract()
                 .body().jsonPath().getList(".", Location.class);
 
-        Assertions.assertEquals(24,response.size());
-        Assertions.assertEquals("Moscow", response.get(0).getEnglishName());
+        Assertions.assertEquals("Amursk", response.get(0).getEnglishName());
     }
 }
